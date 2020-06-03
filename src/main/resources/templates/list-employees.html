@@ -1,0 +1,45 @@
+<html xmlns="https://www.thymeleaf.org/">
+<head>
+  <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+</head>
+<body>
+<div class="container ">
+	<h1>Employee Directory</h1>
+	
+	<a th:href="@{/employees/showFormFeed}" class="btn btn-primary btn-sm mb-3">Add employee</a>
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>S.No.</th>
+				<th>First Name</th>
+				<th>last Name</th>
+				<th>email</th>
+				<th>update</th>
+				<th>delete</th>
+				
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="theEmployee : ${employees}">
+			<td th:text="${theEmployee.id}"/>	
+				<td th:text="${theEmployee.firstName}"/>
+				<td th:text="${theEmployee.lastName}"/>
+				<td th:text="${theEmployee.email}"/>
+				<td><a th:href="@{/employees/showFormUpdate(employeeId=${theEmployee.id})}" class="btn btn-primary btn-sm">update</a></td>
+				<td><a th:href=@{/employees/delete(employeeId=${theEmployee.id})} class="btn btn-danger btn-sm">delete</a></td>
+				
+			</tr>
+		</tbody>
+
+	</table>
+	</div>
+	
+</body>
+</html>
